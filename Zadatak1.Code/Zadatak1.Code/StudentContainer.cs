@@ -8,7 +8,7 @@ namespace Zadatak1.Code
 {
     public class StudentContainer
     {
-        List<Student> popis = new List<Student>();
+        List<Student> Lista = new List<Student>();
 
         private static StudentContainer instance;
         private StudentContainer() { }
@@ -28,12 +28,16 @@ namespace Zadatak1.Code
 
         public void AddTopopis(Student a)
         {
-            popis.Add(a);
+            Lista.Add(a);
         }
 
         public List<Student> GetList()
         {
-            return popis;
+            return Sort(Lista);
+        }
+        public List<Student> Sort(List<Student> stud)
+        {
+            return stud.OrderBy(a => a.lastname).ToList();
         }
     }
 

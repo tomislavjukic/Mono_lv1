@@ -12,50 +12,72 @@ namespace lv1.app
     {
         static void Main(string[] args)
         {
-           // bool flag = false;
-           // do {
-                Console.WriteLine("Odaberite operaciju");
-                string input = Console.ReadLine();
+            Validation val = new Validation();
+            string input;
+            bool flag5;
+            do
+            {
+                flag5 = false;
+                
+                    Console.WriteLine("Odaberite operaciju");
+                    input = Console.ReadLine();
+                    val.CheckOperation(input);
 
-                if (String.Compare(Operations.enlist, input, true) == 0)
-                {
-                    Console.WriteLine("Operacija uspješno odabrana");
-                    enlist();
-                }
-                else if (String.Compare(Operations.display, input, true) == 0)
-                {
-                    Console.WriteLine("Operacija uspješno odabrana");
-                    display();
-                }
-                else
-                {
-                    Console.WriteLine("Operacija neuspješno odabrana");
-                   // flag = true;
-                }
-           // } while (flag == false);
+                    if (val.EnlistInput)
+                    {
+                        enlist();
+
+                    }
+                    else if (val.DisplayInput)
+                    {
+                        display();
+
+                        flag5 = true;
+                    }
+
+
+            } while (!flag5);
+
         }
+
 
         public static void enlist()
         {
             Student novistudent = new Student();
-            float gpa;
+            Validation val = new Validation();
+       
+            string gpa;
             int id;
             string name, lastname;
 
-            Console.WriteLine("Unesite ime studenta");
-            name = Console.ReadLine();
-            novistudent.name = name;
+            do {
+                Console.WriteLine("Unesite ime studenta");
+                name = Console.ReadLine();
+                novistudent.name = name;
+                val.CheckForNull(name);
+            }while(!val.CheckForNullInput);
 
-            Console.WriteLine("Unesite prezime studenta");
-            lastname = Console.ReadLine();
-            novistudent.lastname = lastname;
+            do{
+                Console.WriteLine("Unesite prezime studenta");
+                lastname = Console.ReadLine();
+                novistudent.lastname = lastname;
+                val.CheckForNull(lastname);
+            } while (!val.CheckForNullInput);
 
-            Console.WriteLine("Unesite GPA studenta");
-            gpa = float.Parse(Console.ReadLine());
+            do{
+
+                Console.WriteLine("Unesite GPA studenta");
+                gpa = Console.ReadLine();
+                val.CheckGpa(gpa);
+
+            } while (!val.GpaInput);
             novistudent.gpa = gpa;
 
             StudentContainer lista = StudentContainer.Instance;
             lista.AddTopopis(novistudent);
+
+            StudentIdGenerator ID = StudentIdGenerator.Instance;
+            novistudent.id = ID.IncID();
         }
 
         public static void display()
@@ -65,7 +87,7 @@ namespace lv1.app
 
             for(int i = 0; i < people.Count; i++)
             {
-                Console.WriteLine(people[i].name + "," + people[i].lastname + "," + people[i].gpa);
+                Console.WriteLine(people[i].id + "," + people[i].name + "," + people[i].lastname + "," + people[i].gpa);
             }
 
 
