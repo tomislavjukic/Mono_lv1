@@ -26,7 +26,7 @@ namespace Zadatak1.Code
 
         
 
-        public void AddTopopis(Student a)
+        public void AddToPopis(Student a)
         {
             Lista.Add(a);
         }
@@ -35,9 +35,9 @@ namespace Zadatak1.Code
         {
             return Sort(Lista);
         }
-        public List<Student> Sort(List<Student> stud)
+        public List<Student> Sort(List<Student> studenti)
         {
-            return stud.OrderBy(a => a.lastname).ToList();
+            return studenti.OrderBy(a => a.LastName).ToList();
         }
     }
 

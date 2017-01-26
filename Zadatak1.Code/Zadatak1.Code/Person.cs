@@ -8,8 +8,8 @@ namespace Zadatak1.Code
 {
     public abstract class Person
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string lastname { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
     }
 }

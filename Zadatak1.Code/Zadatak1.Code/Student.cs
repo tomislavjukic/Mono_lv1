@@ -8,6 +8,6 @@ namespace Zadatak1.Code
 {
     public class Student : Person
     {
-        public string gpa { get; set; }
+        public string Gpa { get; set; }
     }
 }

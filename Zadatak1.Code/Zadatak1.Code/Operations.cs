@@ -8,7 +8,7 @@ namespace Zadatak1.Code
 {
     public static class Operations
     {
-        public static string enlist = "enlist";
-        public static string display = "display";
+        public static string ENLIST = "enlist";
+        public static string DISPLAY = "display";
     }
 }

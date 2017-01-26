@@ -8,7 +8,7 @@ namespace Zadatak1.Code
 {
     public class StudentIdGenerator
     {
-        int id1 = 0;
+        int ID = 0;
         private static StudentIdGenerator instance;
 
         private StudentIdGenerator()
@@ -29,7 +29,7 @@ namespace Zadatak1.Code
         }
         public int IncID()
         {
-            return id1++;
+            return ID++;
         }
     }
 }

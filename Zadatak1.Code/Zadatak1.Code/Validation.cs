@@ -19,11 +19,11 @@ namespace Zadatak1.Code
             EnlistInput = false;
             DisplayInput = false;
 
-            if (String.Compare(Operations.enlist, s, true) == 0)
+            if (String.Compare(Operations.ENLIST, s, true) == 0)
             {
                 EnlistInput = true;
             }
-            else if (String.Compare(Operations.display, s, true) == 0)
+            else if (String.Compare(Operations.DISPLAY, s, true) == 0)
             {
                 DisplayInput = true;
             }
@@ -57,10 +57,8 @@ namespace Zadatak1.Code
             else
             {
                 GpaInput = false;
-                Console.WriteLine("Krivi unos za prosjeka, pokusajte opet");
-            }
-           
-
+                Console.WriteLine("Krivi unos, pokusajte opet");
+            }      
         }
     }
 }

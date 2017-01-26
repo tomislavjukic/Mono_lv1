@@ -12,82 +12,80 @@ namespace lv1.app
     {
         static void Main(string[] args)
         {
-            Validation val = new Validation();
+            Validation Validation = new Validation();
             string input;
-            bool flag5;
+            bool CheckForDisplay;
             do
             {
-                flag5 = false;
+                CheckForDisplay = false;
                 
                     Console.WriteLine("Odaberite operaciju");
                     input = Console.ReadLine();
-                    val.CheckOperation(input);
+                    Validation.CheckOperation(input);
 
-                    if (val.EnlistInput)
+                    if (Validation.EnlistInput)
                     {
-                        enlist();
+                        Enlist();
 
                     }
-                    else if (val.DisplayInput)
+                    else if (Validation.DisplayInput)
                     {
-                        display();
+                        Display();
 
-                        flag5 = true;
+                        CheckForDisplay = true;
                     }
 
 
-            } while (!flag5);
+            } while (!CheckForDisplay);
 
         }
 
 
-        public static void enlist()
+        public static void Enlist()
         {
-            Student novistudent = new Student();
-            Validation val = new Validation();
+            Student NewStudent = new Student();
+            Validation Validation = new Validation();
        
-            string gpa;
-            int id;
-            string name, lastname;
+            string name, lastname, gpa;
 
             do {
                 Console.WriteLine("Unesite ime studenta");
                 name = Console.ReadLine();
-                novistudent.name = name;
-                val.CheckForNull(name);
-            }while(!val.CheckForNullInput);
+                NewStudent.Name = name;
+                Validation.CheckForNull(name);
+            }while(!Validation.CheckForNullInput);
 
             do{
                 Console.WriteLine("Unesite prezime studenta");
                 lastname = Console.ReadLine();
-                novistudent.lastname = lastname;
-                val.CheckForNull(lastname);
-            } while (!val.CheckForNullInput);
+                NewStudent.LastName = lastname;
+                Validation.CheckForNull(lastname);
+            } while (!Validation.CheckForNullInput);
 
             do{
 
                 Console.WriteLine("Unesite GPA studenta");
                 gpa = Console.ReadLine();
-                val.CheckGpa(gpa);
+                Validation.CheckGpa(gpa);
 
-            } while (!val.GpaInput);
-            novistudent.gpa = gpa;
+            } while (!Validation.GpaInput);
+            NewStudent.Gpa = gpa;
 
             StudentContainer lista = StudentContainer.Instance;
-            lista.AddTopopis(novistudent);
+            lista.AddToPopis(NewStudent);
 
             StudentIdGenerator ID = StudentIdGenerator.Instance;
-            novistudent.id = ID.IncID();
+            NewStudent.Id = ID.IncID();
         }
 
-        public static void display()
+        public static void Display()
         {
-            StudentContainer lista = StudentContainer.Instance;
-            List<Student> people = lista.GetList();
+            StudentContainer Lista = StudentContainer.Instance;
+            List<Student> People = Lista.GetList();
 
-            for(int i = 0; i < people.Count; i++)
+            for(int i = 0; i < People.Count; i++)
             {
-                Console.WriteLine(people[i].id + "," + people[i].name + "," + people[i].lastname + "," + people[i].gpa);
+                Console.WriteLine(People[i].Id + ". " + People[i].Name + " " + People[i].LastName + " - " + People[i].Gpa);
             }
 
 
